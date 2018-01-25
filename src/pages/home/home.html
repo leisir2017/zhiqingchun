@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left (click)="domenu()"> 
+      <button ion-button><ion-icon name="ios-mic-outline"></ion-icon></button> 
+    </ion-buttons> 
+    <ion-title>
+      致青春
+    </ion-title>
+    <ion-buttons right (click)="person()"> 
+      <button ion-button><ion-icon name="ios-person-outline"></ion-icon></button> 
+    </ion-buttons> 
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="false" autoplay="2000" loop="true" speed="1500" effect="fade">
+    <ion-slide class="slide-background swiper-no-swiping" *ngFor="let background of backgrounds" [ngStyle]="{'background-image': 'url(' + background +')'}">
+    </ion-slide>
+  </ion-slides>
+
+  <ion-fab center bottom>
+   <button ion-fab><ion-icon name="add"></ion-icon></button>
+   <ion-fab-list side="top">
+      <button ion-fab (click)="add()"><ion-icon name="send"></ion-icon></button>
+    </ion-fab-list>
+   <ion-fab-list side="left">
+      <button ion-fab (click)="qrcanner()"><ion-icon name="qr-scanner"></ion-icon></button>
+    </ion-fab-list>
+   <ion-fab-list side="right">
+      <button ion-fab (click)="game()"><ion-icon name="game-controller-b"></ion-icon></button>
+    </ion-fab-list>
+
+  </ion-fab>
+  <ion-fab center bottom style="bottom: 150px;">
+   <button ion-fab (click)="local()">{{ localtion }}</button>
+  </ion-fab>
+  <div class="home-container">
+
+     
+      <div style="opacity: 0.8;" *ngFor="let item of lists, let i = index" class="{{colors[i]}}">
+        <ion-card>
+
+          <ion-card-header style="text-align: left;" (click)="info(item)">
+            {{item.title}}
+          </ion-card-header>
+
+          <ion-card-content style="text-align: left;">
+              <ion-icon name="ios-person-outline"></ion-icon> {{item.username}}  
+              <ion-icon name="ios-time-outline" style="padding-left: 4px;"></ion-icon> {{item.addtime}}  
+              <ion-icon name="ios-pin-outline" style="padding-left: 4px;"></ion-icon> {{item.city}}   
+              <ion-icon name="ios-thumbs-up-outline" style="padding-left: 4px;"></ion-icon> {{item.like}}  
+          </ion-card-content>
+
+      </ion-card>
+     </div>
+
+  </div>
+
+
+</ion-content>

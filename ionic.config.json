@@ -1,0 +1,8 @@
+{
+  "name": "zhiqingchun",
+  "app_id": "ef67bdce",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

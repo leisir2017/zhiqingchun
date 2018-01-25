@@ -1,0 +1,62 @@
+page-add {
+	.myinput{
+		width: 100%;
+	    height: 4rem;
+	    padding: 0 1rem;
+	    font-size: 1.4rem;
+	    color: #333;
+	    border: 1px solid #d2d2d2;
+	    border-radius: .3rem;
+	    line-height: 3.8rem;
+	}
+	.mytextarea{
+		    width: 100%;
+    min-height: 120px;
+    height: auto;
+        border: 1px solid #d2d2d2;
+	}
+
+	body, .ionic-body {
+	    position: static!important;
+	}
+
+	.pictures {
+	    position: relative;
+	    float: left;
+	    width: 50px;
+	    height: 50px;
+	    margin: 3px;
+	    background-color: #f1f1f1;
+	  }
+	  .pictures img {
+	    width: 100%;
+	    height: 100%;
+	    object-fit: cover;
+	    border-radius: 6px;
+	  }
+
+	  .add {
+	    font-size: 25px;
+	    color: #5c5c5c;
+	    text-align: center;
+	    border: solid 1px #e0dfe4;
+	    line-height: 54px;
+	    vertical-align: middle;
+	    border-radius: 6px;
+	  }
+
+	  .remove {
+	    position: absolute;
+	    right: -5px;
+	    top: -5px;
+	    display: block;
+	    width: 18px;
+	    height: 18px;
+	    border-radius: 18px;
+	    font-size: 16px;
+	    text-align: center;
+	    color: #fff;
+	    background-color: red;
+	  }
+
+}
