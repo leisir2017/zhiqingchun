@@ -1,5 +1,5 @@
 # zhiqingchun
-致青春,一个练手的ionic3 App
+致青春,一个练手的ionic3 + angular4 App
 # 用法
 1. git clone https://github.com/leisir2017/zhiqingchun.git
 2. cd zhiqingchun
@@ -12,6 +12,7 @@
 # dome 部分页面截图
 <img src="./src/assets/demo/home2.png">
 <img src="./src/assets/demo/movie.png">
+<img src="./src/assets/demo/movieinfo.png">
 <img src="./src/assets/demo/login.png">
 <img src="./src/assets/demo/list.png">
 <img src="./src/assets/demo/add.png">
