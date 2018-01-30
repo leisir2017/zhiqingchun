@@ -3,11 +3,12 @@ import { IonicPageModule } from 'ionic-angular';
 import { RegPage } from './reg';
 
 @NgModule({
-  declarations: [
-    RegPage,
-  ],
-  imports: [
-    IonicPageModule.forChild(RegPage),
-  ],
+    declarations: [
+        RegPage,
+    ],
+    imports: [
+        IonicPageModule.forChild(RegPage),
+    ],
 })
-export class RegPageModule {}
+export class RegPageModule {
+}

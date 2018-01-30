@@ -3,11 +3,12 @@ import { IonicPageModule } from 'ionic-angular';
 import { ShowPage } from './show';
 
 @NgModule({
-  declarations: [
-    ShowPage,
-  ],
-  imports: [
-    IonicPageModule.forChild(ShowPage),
-  ],
+    declarations: [
+        ShowPage,
+    ],
+    imports: [
+        IonicPageModule.forChild(ShowPage),
+    ],
 })
-export class ShowPageModule {}
+export class ShowPageModule {
+}

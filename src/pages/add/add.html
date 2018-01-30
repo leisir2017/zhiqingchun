@@ -1,48 +1,50 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      发布信息
-    </ion-title>
-   <ion-buttons right (click)="dismiss()"> 
-      <button ion-button><ion-icon name="ios-close-circle-outline"></ion-icon></button> 
-    </ion-buttons> 
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            发布信息
+        </ion-title>
+        <ion-buttons right (click)="dismiss()">
+            <button ion-button>
+                <ion-icon name="ios-close-circle-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-	<ion-list>
+    <ion-list>
 
-	  <ion-item style="border-top:0px;">
-	  <input class="myinput" type="text" [(ngModel)]="data.title" placeholder="标题">
-	  </ion-item>
+        <ion-item style="border-top:0px;">
+            <input class="myinput" type="text" [(ngModel)]="data.title" placeholder="标题">
+        </ion-item>
 
-	  <ion-item class="noborder">
-	  <textarea  class="mytextarea" placeholder="内容" [(ngModel)]="data.content"></textarea>
-	  </ion-item>
+        <ion-item class="noborder">
+            <textarea class="mytextarea" placeholder="内容" [(ngModel)]="data.content"></textarea>
+        </ion-item>
 
-	  <ion-item class="noborder">
-	  <ion-icon name="pin"></ion-icon> {{geo.address}}
-	  </ion-item>
+        <ion-item class="noborder">
+            <ion-icon name="pin" (click)="local()"></ion-icon>
+            {{geo.address}}
+        </ion-item>
 
-	</ion-list>
+    </ion-list>
 
-	<div class="clear-fix" style="padding-top: 2px;padding-left: 16px;" *ngIf="data.images">
-	  <div *ngFor="let fileObj of data.images, let i = index" class="pictures">
-	    <span *ngIf="allowDelete" class="remove" tappable (click)="deletePicture(i)">×</span>
-	    <img src="{{fileObj}}" tappable (click)="viewerPicture(i)">
-	  </div>
-	  <div *ngIf="data.images.length<13" tappable (click)="addimgs()" class="pictures add">
-	    <ion-icon name="camera"></ion-icon>
-	  </div>
-	</div>
+    <div class="clear-fix" style="padding-top: 2px;padding-left: 16px;" *ngIf="data.images">
+        <div *ngFor="let fileObj of data.images, let i = index" class="pictures">
+            <span *ngIf="allowDelete" class="remove" tappable (click)="deletePicture(i)">×</span>
+            <img src="{{fileObj}}" tappable (click)="viewerPicture(i)">
+        </div>
+        <div *ngIf="data.images.length<13" tappable (click)="addimgs()" class="pictures add">
+            <ion-icon name="camera"></ion-icon>
+        </div>
+    </div>
 
-	
 
-	<div style="text-align: center;margin-top: 30px;clear: both;">
-		
-		<button ion-button (click)="add()" color="secondary">发布</button>
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<button ion-button (click)="dismiss()">关闭</button>
-	</div>
+    <div style="text-align: center;margin-top: 30px;clear: both;">
+
+        <button ion-button (click)="add()" color="secondary">发布</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button ion-button (click)="dismiss()">关闭</button>
+    </div>
 </ion-content>

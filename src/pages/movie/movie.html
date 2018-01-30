@@ -1,0 +1,59 @@
+<!--
+  Generated template for the MoviePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{info.nm}}</ion-title>
+        <ion-buttons right (click)="dismiss()">
+            <button ion-button>
+                <ion-icon name="ios-close-circle-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <ion-slides centeredSlides="true" slidesPerView="2" initialSlide="1" zoom="false"
+                        *ngIf="info.photos && info.photos.length>0">
+                <ion-slide *ngFor="let item of info.photos;let i = index">
+                    <img (click)="viewerPicture(i)" [src]="item.replace('w.h/','')"/>
+                </ion-slide>
+            </ion-slides>
+        </div>
+    </div>
+
+    <div style="padding: 0px 12px;">
+        <p style="text-align: center;"><img (click)="viewerPictureInfo()" src="{{info.img}}"></p>
+        <p>名称：{{info.nm}}</p>
+        <p>类型：{{info.cat}} {{info.ver}}</p>
+        <p>主演：{{info.dir}}</p>
+        <p>演员：{{info.star}}</p>
+        <p>时间：{{info.rt}}</p>
+        <p>评分：{{info.sc}}</p>
+        <p>来源：{{info.src}}</p>
+        <div [innerHTML]="info.dra"></div>
+        <p>短评</p>
+        <ion-list>
+            <ion-item *ngFor="let c of comments;let k = index;">
+                <ion-thumbnail item-start>
+                    <img (click)="viewerPictureAvatar(k)" src="{{ c['avatarurl'] }}">
+                </ion-thumbnail>
+                <h2>{{c["nickName"]}}</h2>
+                <p>评分：{{c["score"]}}</p>
+                <p>时间：{{c["time"]}}</p>
+                <p [innerHTML]="c.content"></p>
+            </ion-item>
+        </ion-list>
+        <div padding *ngIf="hasCommentNext">
+            <button ion-button full (click)="loadmorecomment()">加载更多评论</button>
+        </div>
+    </div>
+</ion-content>

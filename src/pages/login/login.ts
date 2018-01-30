@@ -13,58 +13,58 @@ import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+    selector: 'page-login',
+    templateUrl: 'login.html',
 })
 export class LoginPage {
-	username:string = '';
-	password:string = '';
-  constructor(
-    public user: User,
-    public navCtrl: NavController,
-    public viewCtrl: ViewController,
-    public storage: Storage,
-   public navParams: NavParams,
-   public nativeProvider: NativeProvider) {
-  }
+    username:string = '';
+    password:string = '';
 
-  ionViewDidLoad() {
-    let regList = this.storage.get('regList');
-    console.log(regList);
-  }
+    constructor(public user:User,
+                public navCtrl:NavController,
+                public viewCtrl:ViewController,
+                public storage:Storage,
+                public navParams:NavParams,
+                public nativeProvider:NativeProvider) {
+    }
 
-  dismiss(){
-    this.viewCtrl.dismiss();
-  }
+    ionViewDidLoad() {
+        let regList = this.storage.get('regList');
+        console.log(regList);
+    }
 
-  login(){
-  	if(this.username != '' && this.password != ''){
-  		
-  		
-      this.storage.get('regList').then(reg=>{
-        if(reg && reg[this.username]){
-          let user = reg[this.username];
-          if(this.password != user.password){
-              return this.nativeProvider.showToast('密码错误！')
-            }
+    dismiss() {
+        this.viewCtrl.dismiss();
+    }
 
-            this.storage.set('user',user);
-            this.user.id = user.id;
-            this.user.username = user.username ;
-            this.user.avatar = user.avatar ;
-            this.user.password = user.password ;
-            this.user.phone = user.phone ;
-            this.user.email = user.email ;
-            this.user.intro = user.intro ;
-            this.user.age = user.age ;
-            this.user.gender = user.gender ;
-            this.viewCtrl.dismiss(user);
-        }else{
-          return this.nativeProvider.showToast('用户不存在！')
+    login() {
+        if (this.username != '' && this.password != '') {
+
+
+            this.storage.get('regList').then(reg=> {
+                if (reg && reg[this.username]) {
+                    let user = reg[this.username];
+                    if (this.password != user.password) {
+                        return this.nativeProvider.showToast('密码错误！')
+                    }
+
+                    this.storage.set('user', user);
+                    this.user.id = user.id;
+                    this.user.username = user.username;
+                    this.user.avatar = user.avatar;
+                    this.user.password = user.password;
+                    this.user.phone = user.phone;
+                    this.user.email = user.email;
+                    this.user.intro = user.intro;
+                    this.user.age = user.age;
+                    this.user.gender = user.gender;
+                    this.viewCtrl.dismiss(user);
+                } else {
+                    return this.nativeProvider.showToast('用户不存在！')
+                }
+            })
+
         }
-      })
-  		
-  	}
-  }
+    }
 
 }

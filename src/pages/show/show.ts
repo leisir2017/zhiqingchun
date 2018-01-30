@@ -10,31 +10,32 @@ import { NativeProvider } from '../../providers/native/native';
  */
 @IonicPage()
 @Component({
-  selector: 'page-show',
-  templateUrl: 'show.html',
+    selector: 'page-show',
+    templateUrl: 'show.html',
 })
 export class ShowPage {
-	info : any = {};
-  constructor(public navCtrl: NavController,public modalCtrl: ModalController,public nativeProvider: NativeProvider, public navParams: NavParams, public viewCtrl: ViewController) {
-  	this.info = navParams.get("info");
-  }
+    info:any = {};
 
-  ionViewDidLoad() {
-    this.info.time = this.nativeProvider.getLocalTime(this.info.id);
-    console.log(this.info);
-  }
-
-  dismiss(){
-    this.viewCtrl.dismiss();
-  }
-
-  viewerPicture(index) {//照片预览
-    let picturePaths = [];
-    for (let fileObj of this.info.images) {
-      picturePaths.push(fileObj);
+    constructor(public navCtrl:NavController, public modalCtrl:ModalController, public nativeProvider:NativeProvider, public navParams:NavParams, public viewCtrl:ViewController) {
+        this.info = navParams.get("info");
     }
-    this.modalCtrl.create('ImgviewPage', {'initialSlide': index, 'picturePaths': picturePaths}).present();
-  }
+
+    ionViewDidLoad() {
+        this.info.time = this.nativeProvider.getLocalTime(this.info.id);
+        console.log(this.info);
+    }
+
+    dismiss() {
+        this.viewCtrl.dismiss();
+    }
+
+    viewerPicture(index) {//照片预览
+        let picturePaths = [];
+        for (let fileObj of this.info.images) {
+            picturePaths.push(fileObj);
+        }
+        this.modalCtrl.create('ImgviewPage', {'initialSlide': index, 'picturePaths': picturePaths}).present();
+    }
 
 
 }

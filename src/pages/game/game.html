@@ -6,14 +6,30 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>玩一玩</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>媒体</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-	<div style="text-align: center;">大家一起来嗨皮~</div>
-	<div style="text-align: center;"><button ion-button color="secondary" (click)="start()">开始游戏</button></div>
+<ion-content>
+    <!-- 视频播放器 -->
+    <div style="width: 100%;">
+        <video style="width: 100%;" playsinline webkit-playsinline></video>
+    </div>
+
+    <div style="text-align: center;">
+        <button ion-button color="secondary" (click)="startMedia()">开始录制</button>
+        <button ion-button color="secondary" (click)="pauseMedia()">暂停录制</button>
+        <button ion-button color="secondary" (click)="stopMedia()">停止录制</button>
+        <button ion-button color="secondary" (click)="startMusic()">开始音乐</button>
+        <button ion-button color="secondary" (click)="pauseMusic()">暂停音乐</button>
+        <button ion-button color="secondary" (click)="stopMusic()">停止音乐</button>
+
+        <button ion-button color="secondary" (click)="doAudio('uniqueId1')">音频1</button>
+        <button ion-button color="secondary" (click)="doAudio('uniqueId2')">音频2</button>
+        <button ion-button color="secondary" (click)="doAudio('uniqueId3')">音频3</button>
+    </div>
+
 </ion-content>

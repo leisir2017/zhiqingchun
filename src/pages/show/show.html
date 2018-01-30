@@ -6,43 +6,52 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{info.title}}</ion-title>
-    <ion-buttons right (click)="dismiss()"> 
-      <button ion-button><ion-icon name="ios-close-circle-outline"></ion-icon></button> 
-    </ion-buttons> 
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>{{info.title}}</ion-title>
+        <ion-buttons right (click)="dismiss()">
+            <button ion-button>
+                <ion-icon name="ios-close-circle-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
- <ion-card style="opacity: 0.8;">
+    <ion-card style="opacity: 0.8;">
 
         <ion-card-header style="text-align: left;">
-          {{info.title}}
+            {{info.title}}
         </ion-card-header>
 
         <ion-card-content style="text-align: left;">
             <p>
-              &nbsp;<ion-icon name="ios-person-outline"></ion-icon> {{info.username}}  &nbsp;&nbsp;&nbsp;
-            <ion-icon name="ios-time-outline" style="padding-left: 4px;"></ion-icon> {{info.time}}&nbsp;&nbsp;&nbsp;
+                &nbsp;
+                <ion-icon name="ios-person-outline"></ion-icon>
+                {{info.username}} &nbsp;&nbsp;&nbsp;
+                <ion-icon name="ios-time-outline" style="padding-left: 4px;"></ion-icon>
+                {{info.time}}&nbsp;&nbsp;&nbsp;
             </p>
             <p>
-              <ion-icon name="ios-pin-outline" style="padding-left: 4px;"></ion-icon> {{info.address}} 
+                <ion-icon name="ios-pin-outline" style="padding-left: 4px;"></ion-icon>
+                {{info.address}}
             </p>
             <p style="padding: 10px 0px;">{{info.content}}</p>
 
             <div *ngIf="info.images.length > 0">
-              <span *ngFor="let imgs of info.images , let i = index"><img (click)="viewerPicture(i)" style="padding: 6px 0px;" title="{{info.title}}" src="{{ imgs }}"></span>
+                <span *ngFor="let imgs of info.images , let i = index"><img (click)="viewerPicture(i)"
+                                                                            style="padding: 6px 0px;"
+                                                                            title="{{info.title}}"
+                                                                            src="{{ imgs }}"></span>
             </div>
         </ion-card-content>
 
     </ion-card>
 
-	<div style="text-align: center;margin-top: 10px;">
-		
-		<button ion-button (click)="dismiss()">关闭</button>
-		
-	</div>
+    <div style="text-align: center;margin-top: 10px;">
+
+        <button ion-button (click)="dismiss()">关闭</button>
+
+    </div>
 </ion-content>

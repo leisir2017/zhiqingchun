@@ -1,24 +1,24 @@
 page-welcome {
-	.slide-zoom{
-		height:100%;
-	}
-	.col{
-		padding:0px;
-	}
-	ion-slide {
-    	background-color: #eeeeee;
-	}
-	 
-	ion-slide img {
-		//height: 70vh !important;
-	    width: auto !important;
-	}
-	.row-btn{
-	    position: absolute;
-	    z-index: 10;
-	    bottom: 100px;
-	    text-align: center;
-	    margin: 0 auto;
-	    left: 37%;
-	}
+  .slide-zoom {
+    height: 100%;
+  }
+  .col {
+    padding: 0px;
+  }
+  ion-slide {
+    background-color: #eeeeee;
+  }
+
+  ion-slide img {
+    //height: 70vh !important;
+    width: auto !important;
+  }
+  .row-btn {
+    position: absolute;
+    z-index: 10;
+    bottom: 100px;
+    text-align: center;
+    margin: 0 auto;
+    left: 37%;
+  }
 }

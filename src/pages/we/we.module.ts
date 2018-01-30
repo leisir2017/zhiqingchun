@@ -3,11 +3,12 @@ import { IonicPageModule } from 'ionic-angular';
 import { WePage } from './we';
 
 @NgModule({
-  declarations: [
-    WePage,
-  ],
-  imports: [
-    IonicPageModule.forChild(WePage),
-  ],
+    declarations: [
+        WePage,
+    ],
+    imports: [
+        IonicPageModule.forChild(WePage),
+    ],
 })
-export class WePageModule {}
+export class WePageModule {
+}

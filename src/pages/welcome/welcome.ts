@@ -11,25 +11,26 @@ import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
-  selector: 'page-welcome',
-  templateUrl: 'welcome.html',
+    selector: 'page-welcome',
+    templateUrl: 'welcome.html',
 })
 export class WelcomePage {
-  @ViewChild(Slides) slides:Slides;  
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
-  }
+    @ViewChild(Slides) slides:Slides;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad WelcomePage');
-  }
+    constructor(public navCtrl:NavController, public navParams:NavParams, public storage:Storage) {
+    }
 
-   ngAfterViewInit() {
-    this.slides.slidesPerView = "auto"; 
-  }
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad WelcomePage');
+    }
 
-  goToHome(){
-    this.storage.remove('adv');
-    this.navCtrl.setRoot('HomePage');
+    ngAfterViewInit() {
+        this.slides.slidesPerView = "auto";
+    }
 
-  }
+    goToHome() {
+        this.storage.remove('adv');
+        this.navCtrl.setRoot('HomePage');
+
+    }
 }

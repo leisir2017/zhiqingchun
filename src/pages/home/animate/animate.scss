@@ -1,3 +1,64 @@
 page-animate {
-
+  .lg-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    background: #fff;
+    padding: 30px 16px 0 !important;
+  }
+  ion-list.list.list {
+    overflow: hidden;
+    margin: 0;
+    margin-bottom: 16px;
+    text-indent: 8px;
+    .item-input {
+      padding-left: 0;
+    }
+    .text-input {
+      -webkit-box-shadow: 0 0 0px 1000px white inset;
+      padding: 0;
+      margin-left: 0;
+    }
+    .item-block:first-child {
+      border: 0;
+    }
+    .item-block .item-inner {
+      border-bottom: 1px solid #e5e5e5 !important;
+    }
+  }
+  #aaaaa {
+    width: 100px;
+    height: 100px;
+    position: relative;
+  }
+  .dddd {
+    width: 100px;
+    height: 100px;
+    z-index: 999;
+  }
+  .logo {
+    width: 80px;
+    height: 80px;
+    margin: 16px auto 32px;
+    border-radius: 20%;
+    background: #24a7ff;
+  }
+  .lg-btn {
+    .button-md {
+      box-shadow: none;
+      height: 4rem;
+      font-size: 1.7rem;
+    }
+  }
+  .lg-forget {
+    position: fixed;
+    width: 100%;
+    bottom: 16px;
+    left: 0;
+    text-align: center;
+    color: #24a7ff;
+  }
 }

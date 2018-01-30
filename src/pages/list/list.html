@@ -1,57 +1,56 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>我的微博</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>我的微博</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 <ion-content>
-	<ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content
-        pullingIcon="arrow-dropdown"
-        pullingText="下拉刷新"
-        refreshingSpinner="circles"
-        refreshingText="刷新...">
-      </ion-refresher-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="下拉刷新"
+                refreshingSpinner="circles"
+                refreshingText="刷新...">
+        </ion-refresher-content>
     </ion-refresher>
 
     <ion-card *ngFor="let item of lists, let i = index" (click)="info(item)">
 
-	  <ion-item>
-	    <ion-avatar item-start>
-	      <img *ngIf="item.avatar" src="{{ item.avatar }}">
-	      <img *ngIf="!item.avatar" src="assets/imgs/avatar.png">
-	    </ion-avatar>
-	    <h2>{{ item.username }}</h2>
-	    <p>{{ item.time }}</p>
-	  </ion-item>
+        <ion-item>
+            <ion-avatar item-start>
+                <img *ngIf="item.avatar" src="{{ item.avatar }}">
+                <img *ngIf="!item.avatar" src="assets/imgs/avatar.png">
+            </ion-avatar>
+            <h2>{{ item.username }}</h2>
+            <p>{{ item.time }}</p>
+        </ion-item>
 
-	  <img *ngIf="item.images.length > 0" src="{{ item.images[0] }}">
-	  <ion-card-content>
-	    <p>{{ item.content }}</p>
-	  </ion-card-content>
+        <img *ngIf="item.images.length > 0" src="{{ item.images[0] }}">
+        <ion-card-content>
+            <p>{{ item.content }}</p>
+        </ion-card-content>
 
-	  <ion-row>
-	    <ion-col>
-	      <button ion-button icon-left clear small>
-	        <ion-icon name="thumbs-up"></ion-icon>
-	        <div>{{ item.like }} Likes</div>
-	      </button>
-	    </ion-col>
-	    <ion-col>
-	      <button ion-button icon-left clear small>
-	        <ion-icon name="text"></ion-icon>
-	        <div>{{ item.comment }} Comments</div>
-	      </button>
-	    </ion-col>
-	    
-	  </ion-row>
+        <ion-row>
+            <ion-col>
+                <button ion-button icon-left clear small>
+                    <ion-icon name="thumbs-up"></ion-icon>
+                    <div>{{ item.like }} Likes</div>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button icon-left clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div>{{ item.comment }} Comments</div>
+                </button>
+            </ion-col>
 
-	</ion-card>
+        </ion-row>
 
-	<div padding>
-		
-		<button ion-button full (click)="loading()">加载更多</button>
-	</div>
+    </ion-card>
+
+    <div padding>
+        <button ion-button full (click)="loading()">加载更多</button>
+    </div>
 </ion-content>

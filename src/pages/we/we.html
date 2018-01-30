@@ -1,91 +1,100 @@
 <ion-header>
-  <ion-navbar>
-    
-    <ion-title>
-      个人中心
-    </ion-title>
-    <ion-buttons right (click)="setting()"> 
-      <button ion-button>设置</button> 
-    </ion-buttons> 
-  </ion-navbar>
+    <ion-navbar>
+
+        <ion-title>
+            个人中心
+        </ion-title>
+        <ion-buttons right (click)="setting()">
+            <button ion-button>设置</button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 
 <ion-content>
 
-<div class="ucontent_wrap">
-     
-     <div class="index_top" *ngIf="isLogin">
-      <dl class="user_info">
-        <dt>
-          <a href="javascript:;">
-            <img (click)="viewAvatar(0)" src="{{userInfo.avatar}}" alt="{{userInfo.username}}" title="{{userInfo.username}}">
-          </a>
-        </dt>
-        <dd>
-            <p class="mt1" *ngIf="userInfo.username"><a href="javascript:;">{{userInfo.username}}</a></p>
-          <div class="commends">
-            <span>{{ userInfo.intro }}</span>
-            <div class="starts"></div>
-          </div>
-        </dd>
-      </dl>
-      <div class="point_area">
-        <span class="point_icon" (click)="edit()"></span>
-      </div>
-     </div>
+    <div class="ucontent_wrap">
 
-     <div class="center_top" *ngIf="!isLogin">
-       <span><img src="assets/imgs/avatar.png" alt="登陆" title="登陆"></span>    
-     </div>
-     <div class="center_opes" *ngIf="!isLogin">
-          <div><button (click)="goLogin()" type="button">登陆</button></div>
-          <div><button (click)="goReg()" type="button">注册</button></div>
-     </div>
-    
- </div>
+        <div class="index_top" *ngIf="isLogin">
+            <dl class="user_info">
+                <dt>
+                    <a href="javascript:;">
+                        <img (click)="viewAvatar(0)" src="{{userInfo.avatar}}" alt="{{userInfo.username}}"
+                             title="{{userInfo.username}}">
+                    </a>
+                </dt>
+                <dd>
+                    <p class="mt1" *ngIf="userInfo.username"><a href="javascript:;">{{userInfo.username}}</a></p>
+                    <div class="commends">
+                        <span>{{ userInfo.intro }}</span>
+                        <div class="starts"></div>
+                    </div>
+                </dd>
+            </dl>
+            <div class="point_area">
+                <span class="point_icon" (click)="edit()"></span>
+            </div>
+        </div>
 
-  <ion-list>
-    <button ion-item (click)="mylist()">
-      <ion-icon name="md-list" item-left color="primary"></ion-icon>
-      我的微博
-    </button>
-    
-    <button ion-item (click)="clearCache()">
-     <ion-icon name="md-archive" item-left style="color: #6fc572;"></ion-icon>
-      清空缓存
-    </button>
-  </ion-list>
+        <div class="center_top" *ngIf="!isLogin">
+            <span><img src="assets/imgs/avatar.png" alt="登陆" title="登陆"></span>
+        </div>
+        <div class="center_opes" *ngIf="!isLogin">
+            <div>
+                <button (click)="goLogin()" type="button">登陆</button>
+            </div>
+            <div>
+                <button (click)="goReg()" type="button">注册</button>
+            </div>
+        </div>
 
-  <ion-list>
-    <button ion-item (click)="logout()" >
-      <ion-icon name="log-out" item-left color="danger"></ion-icon>
-      退出登录
-    </button>
-    <button ion-item (click)="miniSoft()" *ngIf="isLogin">
-      <ion-icon name="log-out" item-left color="danger"></ion-icon>
-      最小化
-    </button>
-    <button ion-item (click)="exitSoftware()" >
-      <ion-icon name="log-out" item-left color="danger"></ion-icon>
-      退出软件
-    </button>
-    
-    
-  </ion-list>
-  <ion-list>
-    <button ion-item (click)="about()">
-      <ion-icon name="information-circle" item-left color="secondary"></ion-icon>
-      关于
-    </button>
-    <button ion-item (click)="selectViersion()">
-      <ion-icon name="cloud-download" item-left color="secondary"></ion-icon>
-      版本检测
-      <em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前版本：{{versionCode}}.0</em>
-    </button>
-    <button ion-item (click)="send()">
-      <ion-icon name="send" item-left color="secondary"></ion-icon>
-      信息反馈
-    </button>
-  </ion-list>
+    </div>
+
+    <ion-list>
+        <button ion-item (click)="mylist()">
+            <ion-icon name="md-list" item-left color="primary"></ion-icon>
+            我的微博
+        </button>
+
+        <button ion-item (click)="clearCache()">
+            <ion-icon name="md-archive" item-left style="color: #6fc572;"></ion-icon>
+            清空缓存
+        </button>
+    </ion-list>
+
+    <ion-list>
+        <button ion-item (click)="logout()">
+            <ion-icon name="log-out" item-left color="danger"></ion-icon>
+            退出登录
+        </button>
+        <button ion-item (click)="miniSoft()" *ngIf="isLogin">
+            <ion-icon name="log-out" item-left color="danger"></ion-icon>
+            最小化
+        </button>
+        <button ion-item (click)="exitSoftware()">
+            <ion-icon name="log-out" item-left color="danger"></ion-icon>
+            退出软件
+        </button>
+
+
+    </ion-list>
+    <ion-list>
+        <button ion-item (click)="about()">
+            <ion-icon name="information-circle" item-left color="secondary"></ion-icon>
+            关于
+        </button>
+        <button ion-item (click)="selectViersion()">
+            <ion-icon name="cloud-download" item-left color="secondary"></ion-icon>
+            版本检测
+            <em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前版本：{{versionCode}}.0</em>
+        </button>
+        <button ion-item (click)="send()">
+            <ion-icon name="send" item-left color="secondary"></ion-icon>
+            信息反馈
+        </button>
+        <button ion-item (click)="testApi()">
+            <ion-icon name="send" item-left color="secondary"></ion-icon>
+            接口测试
+        </button>
+    </ion-list>
 </ion-content>

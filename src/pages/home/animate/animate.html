@@ -6,16 +6,77 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>动画</ion-title>
-    <ion-buttons right (click)="dismiss()"> 
-      <button ion-button><ion-icon name="ios-close-circle-outline"></ion-icon></button> 
-    </ion-buttons> 
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>猫眼电影</ion-title>
+        <ion-buttons right (click)="dismiss()">
+            <button ion-button>
+                <ion-icon name="ios-close-circle-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
+    <div padding>
+        <ion-segment [(ngModel)]="pet">
+            <ion-segment-button value="热映电影">
+                热映电影
+            </ion-segment-button>
+            <ion-segment-button value="即将上映">
+                即将上映
+            </ion-segment-button>
+            <ion-segment-button value="本地影院">
+                本地影院
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div [ngSwitch]="pet">
+        <ion-list *ngSwitchCase="'热映电影'">
+            <ion-item *ngFor="let movie of hotMovies;let i = index">
+                <ion-thumbnail item-start style="margin: 0px 16px 0px 0px;">
+                    <img style="height: auto;" (click)="viewerPicture(i)" src="{{ movie['img'] }}">
+                </ion-thumbnail>
+                <h2>{{movie["nm"]}}</h2>
+                <p>{{movie["cat"]}}</p>
+                <p>主演：{{movie["star"]}}</p>
+                <p>{{movie["rt"]}}</p>
+                <p item-end><em>{{movie["sc"]}}</em>分</p>
+                <button ion-button clear item-end (click)="showmovie(movie['id'])">查看</button>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'即将上映'">
+            <ion-item *ngFor="let movie of comingMovies;let i = index">
+                <ion-thumbnail item-start style="margin: 0px 16px 0px 0px;">
+                    <img style="height: auto;" (click)="viewerPicture(i)" src="{{ movie['img'] }}">
+                </ion-thumbnail>
+                <h2>{{movie["nm"]}}</h2>
+                <p>{{movie["cat"]}}</p>
+                <p>主演：{{movie["star"]}}</p>
+                <p>{{movie["rt"]}}</p>
+                <p item-end><em>{{movie["sc"]}}</em>分</p>
+                <button ion-button clear item-end (click)="showmovie(movie['id'])">查看</button>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'本地影院'">
+            <ion-item *ngFor="let room of rooms;let i = index">
+
+                <h2>{{room["nm"]}}</h2>
+                <p>均价：￥{{room["sellPrice"]}}</p>
+                <p>区域：{{room["area"]}}{{room["dis"]}}</p>
+                <p>{{room["addr"]}}</p>
+                <!--<button ion-button clear item-end (click)="showroom(room['id'])">查看</button>-->
+            </ion-item>
+        </ion-list>
+    </div>
+
+
+    <div padding *ngIf="nextbtn">
+        <button ion-button full (click)="loadmore()">加载更多</button>
+    </div>
 </ion-content>
