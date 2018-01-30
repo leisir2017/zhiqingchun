@@ -1,6 +1,7 @@
 # zhiqingchun
 致青春,一个练手的ionic3 + angular4 App
 # 作者
+Author：leisir
 欢迎交流讨论技术。
 微博：https://weibo.com/520leiguofeng
 Q Q：598627144
