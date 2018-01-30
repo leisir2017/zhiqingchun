@@ -14,7 +14,7 @@ Q Q：598627144
 6. ionic cordova build android --prod --release //压缩签名发布
 7. 到这里就大功告成了，不用感谢我~
 # 功能
-包含相机、相册、扫二维码、定位、http请求封装、欢迎界面、登录、注册、最小化App，退出登录/App、android硬件返回、App更新、内置猫眼接口调用示例、Swiper插件、图片轮播、图片放大/预览等
+包含相机、相册、扫二维码、定位、http请求封装、欢迎界面、登录、注册、最小化App，退出登录/App、android硬件返回、App更新、内置猫眼接口调用示例、Swiper插件、图片轮播、图片放大/预览,音频等
 # dome 部分页面截图
 <img src="./src/assets/demo/home2.png">
 <img src="./src/assets/demo/movie.png">
