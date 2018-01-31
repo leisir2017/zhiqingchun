@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { User } from '../../model/user';
 import { Storage } from '@ionic/storage';
 import { NativeProvider } from '../../providers/native/native';
+import { Events } from 'ionic-angular';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 /**
  * Generated class for the SendPage page.
@@ -30,40 +32,47 @@ export class SendPage {
     constructor(public navCtrl:NavController,
                 public navParams:NavParams,
                 public nativeProvider:NativeProvider,
+                public events:Events,
+                public nativeAudio:NativeAudio,
                 public user:User,
                 public storage:Storage) {
+
+        let self = this;
+        this.events.subscribe('ReceiveMsg', (res) => {
+            let time = new Date().toLocaleTimeString().replace('上午','').replace('下午','');
+            let date = new Date().toLocaleDateString().replace("/", '-').replace("/", '-');
+            let addtime = date + ' ' + time;
+            self.lists.push({id: 999999, username: '致青春', avatar: 'assets/imgs/avatar_logo.png', msg: res.message, addtime: addtime});
+            self.storage.set('feedback', self.lists);
+            self.msg = '';
+            self.nativeAudio.play('uniqueId1');
+        });
+
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad SendPage');
-        //var login_data = '{"type":"login","client_name":"'+this.username+'","room_id":"1"}';
+        this.nativeAudio.preloadSimple('uniqueId1', 'assets/data/audio/msg.mp3');
+        this.username = this.user.username?this.user.username:'游客';
+        this.avatar = this.user.avatar?this.user.avatar:'assets/imgs/avatar.png';
+        this.getList();       
 
-        //this.lhttp_client = new Lhttp("ws://192.168.0.20:7272/");
-        //this.lhttp_client.on_open = function(context) {
-        //    context.subscribe("chatroom", "chat", null, login_data);
-        //}
-        //this.lhttp_client.on_message = function(context){
-        //    //console.log(context);
-        //    console.log('login',context.getBody());
-        //    //context.send("hello, there!");
-        //}
+    }
+    ionViewWillEnter(){
 
     }
 
-    ionViewWillLoad() {
-        this.username = this.user.username?this.user.username:'游客';
-        this.avatar = this.user.avatar?this.user.avatar:'assets/imgs/avatar.png';
-        this.getList();
+    ionViewDidLeave(){
+        this.events.unsubscribe('ReceiveMsg');
     }
 
     send() {
         let id = new Date().getTime();
-        let addtime = new Date().toLocaleDateString();
-        addtime = addtime.replace("/", '-').replace("/", '-');
+        let time = new Date().toLocaleTimeString().replace('上午','').replace('下午','');
+        let date = new Date().toLocaleDateString().replace("/", '-').replace("/", '-');
+        let addtime = date + ' ' + time;
         if (this.msg != '') {
-            this.lists.push({id: id, username: this.user.username, avatar: this.user.avatar, msg: this.msg, addtime: addtime});
+            this.lists.push({id: id, username: this.user.username!=''?this.user.username:'游客', avatar: this.user.avatar, msg: this.msg, addtime: addtime});
             this.storage.set('feedback', this.lists);
-            //this.lhttp_client.context.publish("chatroom", "chat", null, {type:'say',content:this.msg,from_client_id:this.user.username,to_client_id:'all'});
             this.msg = '';
         }
     }

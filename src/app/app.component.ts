@@ -1,10 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, IonicApp, Keyboard, AlertController,ToastController } from 'ionic-angular';
+import { Platform, Nav, IonicApp, Keyboard, AlertController,ToastController,ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NativeProvider } from '../providers/native/native';
 import { Storage } from '@ionic/storage';
 import { User } from '../model/user';
+import { HelperProvider } from "../providers/helper/helper";
+import { Events } from 'ionic-angular';
 
 @Component({
     templateUrl: 'app.html'
@@ -18,10 +20,13 @@ export class MyApp {
                 public keyboard:Keyboard,
                 public alertCtrl:AlertController,
                 private toastCtrl:ToastController,
+                private modalCtrl:ModalController,
                 private native:NativeProvider,
+                private helper:HelperProvider,
                 private storage:Storage,
                 public platform:Platform,
                 public user:User,
+                public events:Events,
                 private statusBar:StatusBar,
                 splashScreen:SplashScreen) {
 
@@ -34,12 +39,29 @@ export class MyApp {
         })
 
         platform.ready().then(() => {
-            // Okay, so the platform is ready and our plugins are available.
-            // Here you can do any higher level native things you might need.
-            this.statusBar.styleDefault();
-            this.statusBar.overlaysWebView(false);
-            this.statusBar.backgroundColorByHexString('#488aff');
-            splashScreen.hide();
+            statusBar.styleDefault();
+            statusBar.overlaysWebView(false);
+            statusBar.backgroundColorByHexString('#488aff');
+            setTimeout(() => { 
+                splashScreen.hide();
+            }, 1000)
+
+            this.helper.initJpush(); //初始化极光推送
+            // 推送消息点击事件
+            this.events.subscribe('click', (res) => {
+                let jsonData;
+                if(typeof res.message == 'string'){
+                    jsonData = JSON.parse(res.message);
+                }else{
+                    jsonData = res.message;
+                }
+                if(jsonData && jsonData.type == 'movie' && jsonData.movieid ){
+                    this.modalCtrl.create('MoviePage', {'id':jsonData.movieid}).present();
+                }
+            });
+
+
+            
             this.registerBackButtonAction();//注册返回按键事件
             this.assertNetwork();//检测网络
 
@@ -54,10 +76,10 @@ export class MyApp {
                     this.user.intro = user.intro;
                     this.user.age = user.age;
                     this.user.gender = user.gender;
+                    this.helper.setTags();
+                    this.helper.setAlias(user.id);
                 }
             })
-
-
         });
     }
 

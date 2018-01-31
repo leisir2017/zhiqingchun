@@ -73,7 +73,7 @@ export class GamePage {
             hasNext   : false,      // show next button, optional, default: true
             hasClose  : true,       // show close button, optional, default: false
 
-// iOS only, optional
+            // iOS only, optional
             album       : 'Absolution',     // optional, default: ''
             duration : 60, // optional, default: 0
             elapsed : 10, // optional, default: 0
