@@ -129,6 +129,10 @@ export class WePage {
         this.navCtrl.push('ListPage')
     }
 
+    myfriend() {
+        this.navCtrl.push('FriendPage')
+    }
+
     viewAvatar(index) {
         let picturePaths = [this.userInfo.avatar];
         this.modalCtrl.create('ImgviewPage', {'initialSlide': index, 'picturePaths': picturePaths}).present();

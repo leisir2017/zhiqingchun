@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.person.leisir" version="7.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.person.leisir" version="9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>致青春</name>
     <description>一个保留青春的App</description>
     <author email="598627144@qq.com" href="https://weibo.com/520leiguofeng/">爱生活爱老婆爱丹丹</author>

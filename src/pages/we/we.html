@@ -55,6 +55,10 @@
             <ion-icon name="md-list" item-left color="primary"></ion-icon>
             我的微博
         </button>
+        <button ion-item (click)="myfriend()">
+            <ion-icon name="ios-people-outline" item-left color="primary"></ion-icon>
+            我的好友
+        </button>
 
         <button ion-item (click)="clearCache()">
             <ion-icon name="md-archive" item-left style="color: #6fc572;"></ion-icon>
@@ -93,7 +97,7 @@
             信息反馈
         </button>
         <button ion-item (click)="testApi()">
-            <ion-icon name="send" item-left color="secondary"></ion-icon>
+            <ion-icon name="ios-cloud-circle-outline" item-left color="secondary"></ion-icon>
             接口测试
         </button>
     </ion-list>

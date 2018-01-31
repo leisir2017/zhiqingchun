@@ -36,20 +36,21 @@ export class GamePage {
     }
 
     ionViewDidLoad() {
-        let mp4 = 'assets/data/video/video.mp4';
-        let mp3 = 'assets/data/music/1.mp3';
-        this.myMedia = this.media.create(mp4);
+        //let mp4 = 'assets/data/video/video.mp4';
+        //let mp3 = 'assets/data/music/1.mp3';
+        //this.myMedia = this.media.create(mp4);
         //this.initMusic();
         this.initAudio();
     }
 
     initAudio(){
         let audio = ['assets/data/audio/1.mp3','assets/data/audio/jgq.mp3','assets/data/audio/jq.mp3'];
-
         this.nativeAudio.preloadSimple('uniqueId1', audio[0]);
         this.nativeAudio.preloadComplex('uniqueId2', audio[1], 1, 1, 0);
         this.nativeAudio.preloadComplex('uniqueId3', audio[2], 1, 1, 0);
-
+        this.nativeAudio.stop('uniqueId1');
+        this.nativeAudio.stop('uniqueId2');
+        this.nativeAudio.stop('uniqueId3');
         this.myAudio = this.nativeAudio;
 
 
